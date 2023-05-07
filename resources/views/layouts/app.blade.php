@@ -7,6 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="Website icon" href="/logo2.png">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
@@ -71,7 +72,16 @@
                 </div>
             </div>
         </nav>
-
+            {{-- <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <header>
+                        <div class="row">
+                        <div class="col-4 college_logo"><img src="/logo2.png" alt="College Logo" class="img-fluid w-50 "></div>
+                        <div class="col-8 college_name">THDC_Institute of Hydropower Engineering & Technology, Tehri</div>
+                    </div>
+                    </header>
+            </div> --}}
+        </div>
         <main class="py-4">
             @yield('content')
         </main>
