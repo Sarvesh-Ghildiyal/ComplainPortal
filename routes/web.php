@@ -21,3 +21,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home/complain', [App\Http\Controllers\ComplainController::class, 'complain_form'])->name('complain');
+Route::post('/home/complain', [App\Http\Controllers\ComplainController::class, 'submit_complain'])->name('submit_complain');
+
+Route::get('/home/feedback', [App\Http\Controllers\ComplainController::class, 'feedback_form'])->name('feedback');
