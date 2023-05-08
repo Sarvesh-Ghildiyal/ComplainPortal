@@ -32,17 +32,19 @@ class ComplainController extends Controller
         //Getting user data
         $user=Auth::user();
 
-        //Saving complain to the database
-        $complain=new Complain();
-        $complain->user_id=$user->id;
-        $complain->department=$request->input('department');
-        $complain->room_no=$request->input('room_no');
-        $complain->reported_by=$request->input('reported_by');
-        $complain->requested_by=$request->input('requested_by');
-        $complain->description=$request->input('description');
-        $complain->save();
+        // //Saving complain to the database
+        // $complain=new Complain();
+        // $complain->user_id=$user->id;
+        // $complain->department=$request->input('department');
+        // $complain->room_no=$request->input('room_no');
+        // $complain->reported_by=$request->input('reported_by');
+        // $complain->requested_by=$request->input('requested_by');
+        // $complain->description=$request->input('description');
+        // $complain->save();
         
-        return view('complains.submitComp');
+        $input=$request->all();
+        $user->complains()->create($input);
+        return redirect()->route('home');
     }
     
     public function index()
