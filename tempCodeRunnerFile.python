@@ -1,0 +1,4 @@
+string='ajf;kaljdfkljalfkja;jdfj;aklfjklajfkka  a fjalfja                                                                                             '
+for(cc in string){
+    print(cc)
+}

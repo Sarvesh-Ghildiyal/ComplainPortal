@@ -25,4 +25,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/home/complain', [App\Http\Controllers\ComplainController::class, 'complain_form'])->name('complain');
 Route::post('/home/complain', [App\Http\Controllers\ComplainController::class, 'submit_complain'])->name('submit_complain');
 
-Route::get('/home/feedback', [App\Http\Controllers\ComplainController::class, 'feedback_form'])->name('feedback');
+Route::get('/home/complains/feedback', [App\Http\Controllers\ComplainController::class, 'feedback_view'])->name('feedback');

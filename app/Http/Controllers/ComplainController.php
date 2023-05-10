@@ -14,8 +14,11 @@ class ComplainController extends Controller
     public function complain_form(){
         return view('complains.submitComp');
     }
-    public function feedback_form(){
-        return view('complains.submitComp');
+    public function feedback_view(){
+        $complains=Complain::all();
+        $user=Auth::user();
+        $uid=$user->id;
+        return view('complains.remarkView',compact('complains','uid'));
     }
 
     public function submit_complain(Request $request)

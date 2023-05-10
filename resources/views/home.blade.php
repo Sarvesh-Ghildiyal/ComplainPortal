@@ -19,7 +19,7 @@
 
                 <div class="d-flex justify-content-around mt-5">
                     <a href="{{route('complain')}}" class="btn btn-primary">Submit Complain</a>
-                    <a href="{{route('feedback')}}" class="btn btn-dark">Submit Remark</a>
+                    <a href="{{route('feedback')}}" class="btn btn-dark">View Complains</a>
                 </div>
 
             </div>
