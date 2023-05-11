@@ -123,8 +123,8 @@
                                     <td>{{$comp->department}}</td>
                                     <td>{{$comp->room_no}}</td>
                                     <td>{{$comp->description}}</td>
-                                    <td><a href={{route('complains.edit',$comp->id)}} class="btn btn-primary">Edit</td>
-                                    <td><a href={{route('complains.destroy',$comp->id)}} class="btn btn-danger">Delete</td>
+                                    <td><a href={{route('complains.edit',$comp->id)}} class="btn btn-primary">Edit</a></td>
+                                    <td><a href={{route('complains.destroy',$comp->id)}} class="btn btn-danger">Delete</a></td>
                                     @php $count+=1; @endphp
                                 </tr>
                                 @endif
