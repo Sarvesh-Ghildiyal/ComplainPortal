@@ -97,44 +97,44 @@
                         
                     
             {{-- Main form --}}
-                    
-            {{-- {{$complains}}; --}}
-            <table class="table">
-                <thead class="table-dark">
-                  <tr>
-                    <th scope="col">S.no</th>
-                    <th scope="col">Dpt</th>
-                    <th scope="col">Room_no</th>
-                    <th scope="col">Desc</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                     @if(count($complains)>0)
-                    {{-- @dd(count($complains)) --}}
-                    {{-- @dd($uid); --}}                        
-                            @php $count=1; @endphp
-                            @foreach($complains as $comp)
-                                @if($uid==$comp->user_id)
-                                    
-                                <tr>
-                                    <th scope="row">{{$count}}</th>
-                                    <td>{{$comp->department}}</td>
-                                    <td>{{$comp->room_no}}</td>
-                                    <td>{{$comp->description}}</td>
-                                    <td><a href={{route('complains.edit',$comp->id)}} class="btn btn-primary">Edit</td>
-                                    <td><a href={{route('complains.destroy',$comp->id)}} class="btn btn-danger">Delete</td>
-                                    @php $count+=1; @endphp
-                                </tr>
-                                @endif
-                            @endforeach
                             
-                    @else
-                    <h3>There are no complains at the moment.</h3>
-                    @endif
-                </tbody>
-              </table>
+                    {{-- <h3 class="col-12">Complain Form</h3> --}}
+                    <!-- Proper form -->
+                    {{-- @dd($complain->id); --}}
+                    <form  id="complain_form" class="col-12" method="Post" action="{{route('complains.update',$complain->id)}}">
+                    
+                
+                            @csrf
+                            @method('Patch')
+                            <div class="row complain_form">
+                                <div class="col-md-6 mt-2">
+                                    <label for="department">Department:</label>
+                                    <input type="text" id="department" name="department" class="form-control" value="{{$complain->department}}" placeholder="eg:CSE" pattern="[A-Za-z]+" required>
+                                </div>
+                                
+                                <div class="col-md-6 mt-2">
+                                    <label for="room_no">Room Number:</label>
+                                    <input type="text" id="room_no" name="room_no" class="form-control" value="{{$complain->room_no}}" placeholder="eg:205" pattern="[0-9]+" required>
+                                </div>
+                    
+                                <div class="col-md-6 mt-4">
+                                    <label for="reported_by">Reported By:</label>
+                                    <input type="text" id="reported_by" name="reported_by" class="form-control" value="{{$complain->reported_by}}" placeholder="eg:Aleva" pattern="[A-Za-z]+" reaquired>
+                                </div>
+                                
+                                <div class="col-md-6 mt-4">
+                                    <label for="requested_by">Requested By:</label>
+                                    <input type="text" id="requested_by" name="requested_by" class="form-control" value="{{$complain->requested_by}}"placeholder="eg:Ganel" pattern="[A-Za-z]+" required>
+                                </div>
+                    
+                                <div class="col-md-12 mt-4">
+                                    <label for="description" class="form-label">Problem:</label>
+                                    <textarea name="description" id="description" class="form-control" rows="3" pattern="[A-Za-z]+"required>{{$complain->description}}</textarea>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary mt-2 d-flex justify-content-center">Save Changes</button>
+                    </form>
                  </div>
             </div>
                     

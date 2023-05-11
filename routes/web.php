@@ -26,3 +26,4 @@ Route::get('/home/complain', [App\Http\Controllers\ComplainController::class, 'c
 Route::post('/home/complain', [App\Http\Controllers\ComplainController::class, 'submit_complain'])->name('submit_complain');
 
 Route::get('/home/complains/feedback', [App\Http\Controllers\ComplainController::class, 'feedback_view'])->name('feedback');
+Route::resource('/home/complains',App\Http\Controllers\ComplainController::class);

@@ -85,6 +85,8 @@ class ComplainController extends Controller
     public function edit(string $id)
     {
         //
+        $complain=Complain::find($id);
+        return view('complains.complainEdit',compact('complain'));
     }
 
     /**
@@ -93,6 +95,25 @@ class ComplainController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $complain=Complain::findorFail($id);
+        // dd($complain);
+        $request->validate([
+            'department'=>'required',
+            'room_no'=>'required',
+            'reported_by'=>'required',
+            'requested_by'=>'required',
+            'description'=>'required|max:255 ',
+        ]);
+       
+        $complain->department=$request->input('department');
+        $complain->room_no=$request->input('room_no');
+        $complain->reported_by=$request->input('reported_by');
+        $complain->requested_by=$request->input('requested_by');
+        $complain->description=$request->input('description');
+        $complain->save();
+
+        return redirect()->route('home');
+        
     }
 
     /**
