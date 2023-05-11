@@ -54,7 +54,6 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -82,9 +81,9 @@
                     </header>
             </div> --}}
         </div>
-        <main class="py-4">
+        
             @yield('content')
-        </main>
+        
     </div>
 </body>
 </html>
