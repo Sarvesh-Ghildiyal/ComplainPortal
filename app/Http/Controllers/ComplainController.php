@@ -77,6 +77,9 @@ class ComplainController extends Controller
     public function show(string $id)
     {
         //
+        $complain=Complain::findorFail($id);
+        $user=Auth::user();
+        return view('complains.complainView',compact('complain','user'));
     }
 
     /**
@@ -122,5 +125,8 @@ class ComplainController extends Controller
     public function destroy(string $id)
     {
         //
+        $complain=Complain::findorFail($id);
+        $complain->delete();
+        return redirect()->back();
     }
 }

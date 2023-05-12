@@ -33,6 +33,7 @@
                     <th scope="col">Room_no</th>
                     <th scope="col">Desc</th>
                     <th scope="col">Edit</th>
+                    <th scope="col">View</th>
                     <th scope="col">Delete</th>
                   </tr>
                 </thead>
@@ -50,7 +51,15 @@
                                     <td>{{$comp->room_no}}</td>
                                     <td>{{$comp->description}}</td>
                                     <td><a href={{route('complains.edit',$comp->id)}} class="btn btn-primary">Edit</a></td>
-                                    <td><a href={{route('complains.destroy',$comp->id)}} class="btn btn-danger">Delete</a></td>
+                                    <td><a href={{route('complains.show',$comp->id)}} class="btn btn-success">View</a></td>
+                                    <td>
+                                      <form action="{{ route('complains.destroy', $comp->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                    
+                                    </td>
                                     @php $count+=1; @endphp
                                 </tr>
                                 @endif
