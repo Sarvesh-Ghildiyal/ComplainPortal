@@ -52,7 +52,12 @@ class ComplainController extends Controller
     
     public function index()
     {
-        dd('hello');
+        //
+        $complains=Complain::all();
+        $user=Auth::user();
+        $uid=$user->id;
+        return view('user.compIndex',compact('complains','uid'));
+
     }
 
     /**
@@ -61,6 +66,7 @@ class ComplainController extends Controller
     public function create()
     {
         //
+        return view('user.compCreate');
     }
 
     /**
@@ -69,18 +75,45 @@ class ComplainController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request->all());
+        $request->validate([
+            'department'=>'required',
+            'room_no'=>'required',
+            'reported_by'=>'required',
+            'requested_by'=>'required',
+            'description'=>'required|max:255 ',
+        ]);
+
+        //Getting user data
+        $user=Auth::user();
+
+        //saving data to database
+        $input=$request->all();
+        $user->complains()->create($input);
+        return redirect()->route('home');
+
+        // //Saving complain to the database
+        // $complain=new Complain();
+        // $complain->user_id=$user->id;
+        // $complain->department=$request->input('department');
+        // $complain->room_no=$request->input('room_no');
+        // $complain->reported_by=$request->input('reported_by');
+        // $complain->requested_by=$request->input('requested_by');
+        // $complain->description=$request->input('description');
+        // $complain->save();
+        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-        $complain=Complain::findorFail($id);
-        $user=Auth::user();
-        return view('complains.complainView',compact('complain','user'));
-    }
+    // public function show(string $id)
+    // {
+    //     //
+    //     $complain=Complain::findorFail($id);
+    //     $user=Auth::user();
+    //     return view('complains.complainView',compact('complain','user'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -89,7 +122,7 @@ class ComplainController extends Controller
     {
         //
         $complain=Complain::find($id);
-        return view('complains.complainEdit',compact('complain'));
+        return view('user.compEdit',compact('complain'));
     }
 
     /**
@@ -128,5 +161,16 @@ class ComplainController extends Controller
         $complain=Complain::findorFail($id);
         $complain->delete();
         return redirect()->back();
+    }
+
+    public function no_complain(){
+        return view('user.noComplain');
+    }
+
+    public function EditIndex(){
+        $complains=Complain::all();
+        $user=Auth::user();
+        $uid=$user->id;
+        return view('user.compEditIndex',compact('complains','uid'));
     }
 }

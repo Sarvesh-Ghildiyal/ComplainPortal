@@ -22,8 +22,14 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home/complain', [App\Http\Controllers\ComplainController::class, 'complain_form'])->name('complain');
-Route::post('/home/complain', [App\Http\Controllers\ComplainController::class, 'submit_complain'])->name('submit_complain');
+//Complain Routes
 
-Route::get('/complains/feedback', [App\Http\Controllers\ComplainController::class, 'feedback_view'])->name('feedback');
-Route::resource('/complains',App\Http\Controllers\ComplainController::class);
+// Route::get('complain/view', [App\Http\Controllers\ComplainController::class, 'feedback_view'])->name('feedback');
+// Route::resource('/complains',App\Http\Controllers\ComplainController::class);
+
+
+Route::resource('/complain',App\Http\Controllers\ComplainController::class);
+
+Route::get('/complain/none', [App\Http\Controllers\ComplainController::class, 'no_complain'])->name('noComplain');
+
+Route::get('/complain', [App\Http\Controllers\ComplainController::class, 'EditIndex'])->name('complain.EditIndex');

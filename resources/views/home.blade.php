@@ -18,8 +18,15 @@
                 <strong>You are in, {{$user->name}}</strong>
 
                 <div class="d-flex justify-content-around mt-5">
-                    <a href="{{route('complain')}}" class="btn btn-primary">Submit Complain</a>
-                    <a href="{{route('feedback')}}" class="btn btn-dark">View Complains</a>
+                   
+                     <a href="{{route('complain.create')}}" class="btn btn-primary">Fill Complain</a>
+                    <a href="{{route('complain.EditIndex')}}" class="btn btn-secondary">Edit Complain</a>
+                   {{-- complain.index pe jaa rha tha phle ye upar vala route --}}
+                    <a href="#" class="btn btn-dark">View</a>
+                    <a href="#" class="btn btn-info">Status</a>
+                
+                    <a href="#" class="btn btn-secondary">Remark</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
                 </div>
 
             </div>

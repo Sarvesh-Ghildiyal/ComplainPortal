@@ -13,7 +13,7 @@
                         </div>
                         </header>
     
-                    <div class="card-header mt-3"><h3>Complain Form</h3></div>
+                    <div class="card-header mt-3"><h3>Submit Feedback</h3></div>
 {{--             
                     @if($errors)
                     @foreach($errors->all() as $error)
@@ -51,7 +51,7 @@
                                     <td>{{$comp->room_no}}</td>
                                     <td>{{$comp->description}}</td>
                                     <td><a href={{route('complains.edit',$comp->id)}} class="btn btn-primary">Edit</a></td>
-                                    <td><a href={{route('complains.show',$comp->id)}} class="btn btn-success">View</a></td>
+                                    <td><a href={{route('remark.view',$comp->id)}} class="btn btn-success">Remark</a></td>
                                     <td>
                                       <form action="{{ route('complains.destroy', $comp->id) }}" method="POST">
                                         @csrf
