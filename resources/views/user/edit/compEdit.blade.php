@@ -14,6 +14,8 @@
                         </header>
     
                     <div class="card-header mt-3"><h3>Complain Form</h3></div>
+
+                    <a href="{{route('compEditIndex')}}">back</a>
 {{--             
                     @if($errors)
                     @foreach($errors->all() as $error)

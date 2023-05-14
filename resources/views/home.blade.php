@@ -23,8 +23,8 @@
                     <a href="{{route('compEditIndex')}}" class="btn btn-secondary">Edit Complain</a>
 
                      {{-- complain.index pe jaa rha tha phle ye upar vala route --}}
-                    <a href="#" class="btn btn-dark">View</a>
-                    <a href="#" class="btn btn-info">Status</a>
+                    <a href="{{route('compViewIndex')}}" class="btn btn-dark">View</a>
+                    <a href="{{route('compStatusIndex')}}" class="btn btn-info">Status</a>
                 
                     <a href="#" class="btn btn-secondary">Remark</a>
                     <a href="#" class="btn btn-danger">Delete</a>

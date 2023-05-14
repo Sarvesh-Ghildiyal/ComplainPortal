@@ -33,3 +33,9 @@ Route::resource('/complain',App\Http\Controllers\ComplainController::class);
 Route::get('/complain/none', [App\Http\Controllers\ComplainController::class, 'no_complain'])->name('noComplain');
 
 Route::get('/compalin/edit',[App\Http\Controllers\ComplainController::class,'editIndex'])->name('compEditIndex');
+
+Route::get('/compalin/view',[App\Http\Controllers\ComplainController::class,'viewIndex'])->name('compViewIndex');
+
+// complain status routes
+Route::get('/compalin/status',[App\Http\Controllers\ComplainController::class,'statusIndex'])->name('compStatusIndex');
+Route::get('/compalin/status/{id}',[App\Http\Controllers\ComplainController::class,'filterIndex'])->name('compFilter');

@@ -60,9 +60,8 @@ class ComplainController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    //Creating new complain
+    
     public function create()
     {
         //
@@ -71,9 +70,6 @@ class ComplainController extends Controller
         return view('user.compCreate',compact('user_name'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //
@@ -109,27 +105,33 @@ class ComplainController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-        $complain=Complain::findorFail($id);
-        $user=Auth::user();
-        return view('complains.complainView',compact('complain','user'));
-    }
+    //willl be directed to show method through
+    // compViewIndex display and will make a sexy page for it
+    // public function show(string $id)
+    // {
+    //     //
+    //     $complain=Complain::findorFail($id);
+    //     $user=Auth::user();
+    //     return view('user.view.complainView',compact('complain','user'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
      */
+    public function editIndex(){
+        $complains=Complain::all();
+        $user=Auth::user();
+        $uid=$user->id;
+        return view('user.edit.compEditIndex',compact('complains','uid'));
+    }
+
     public function edit(string $id)
     {
         //
         $complain=Complain::find($id);
-        return view('user.compEdit',compact('complain'));
+        return view('user.edit.compEdit',compact('complain'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         //
@@ -154,6 +156,7 @@ class ComplainController extends Controller
         
     }
 
+
     /**
      * Remove the specified resource from storage.
      */
@@ -165,6 +168,8 @@ class ComplainController extends Controller
         return redirect()->back();
     }
 
+    //method to generate view
+    //when ther are no complains registered by user
     public function no_complain(){
         return view('user.noComplain');
     }
@@ -177,10 +182,35 @@ class ComplainController extends Controller
     //     dd('hello');
     // }
 
-    public function editIndex(){
+    
+
+    //Complain Viw function
+    public function viewIndex(){
+        return view('user.view.compViewIndex');
+    }
+
+
+    //Complain Status Functions
+    public function statusIndex(){
         $complains=Complain::all();
         $user=Auth::user();
         $uid=$user->id;
-        return view('user.compEditIndex',compact('complains','uid'));
+        return view('user.status.compStatusIndex',compact('complains','uid'));
+    }
+
+    public function filterIndex(string $status){
+            
+        $complains=Complain::all();
+        $user=Auth::user();
+        $uid=$user->id;
+
+        if($status==0){
+              return view('user.status.compOpenStatus',compact('status','complains','uid'));
+        }
+        
+        else{
+            return view('user.status.compCloseStatus',compact('status','complains','uid'));   
+        }
+
     }
 }
