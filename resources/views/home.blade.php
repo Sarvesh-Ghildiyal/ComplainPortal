@@ -20,8 +20,9 @@
                 <div class="d-flex justify-content-around mt-5">
                    
                      <a href="{{route('complain.create')}}" class="btn btn-primary">Fill Complain</a>
-                    <a href="{{route('complain.EditIndex')}}" class="btn btn-secondary">Edit Complain</a>
-                   {{-- complain.index pe jaa rha tha phle ye upar vala route --}}
+                    <a href="{{route('compEditIndex')}}" class="btn btn-secondary">Edit Complain</a>
+
+                     {{-- complain.index pe jaa rha tha phle ye upar vala route --}}
                     <a href="#" class="btn btn-dark">View</a>
                     <a href="#" class="btn btn-info">Status</a>
                 

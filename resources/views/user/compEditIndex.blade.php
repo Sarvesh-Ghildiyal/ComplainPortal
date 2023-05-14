@@ -39,7 +39,6 @@
                                 {{-- table body --}}
                                 <tbody>
                                       
-                                    @php $coun=1; @endphp
                                     @foreach($complains as $comp)
                                         @if($uid==$comp->user_id)
 

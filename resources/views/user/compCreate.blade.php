@@ -44,7 +44,7 @@
                     
                                 <div class="col-md-6 mt-4">
                                     <label for="reported_by">Reported By:</label>
-                                    <input type="text" id="reported_by" name="reported_by" class="form-control" placeholder="eg:Aleva" pattern="^[A-Za-z ]+$" reaquired>
+                                    <input type="text" id="reported_by" name="reported_by" class="form-control" value='{{$user_name}}' placeholder="eg:Aleva" pattern="^[A-Za-z ]+$" reaquired>
                                 </div>
                                 
                                 <div class="col-md-6 mt-4">

@@ -32,4 +32,4 @@ Route::resource('/complain',App\Http\Controllers\ComplainController::class);
 
 Route::get('/complain/none', [App\Http\Controllers\ComplainController::class, 'no_complain'])->name('noComplain');
 
-Route::get('/complain', [App\Http\Controllers\ComplainController::class, 'EditIndex'])->name('complain.EditIndex');
+Route::get('/compalin/edit',[App\Http\Controllers\ComplainController::class,'editIndex'])->name('compEditIndex');
