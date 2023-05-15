@@ -70,6 +70,7 @@ class ComplainController extends Controller
         return view('user.compCreate',compact('user_name'));
     }
 
+        //saving it to database
     public function store(Request $request)
     {
         //
@@ -88,7 +89,7 @@ class ComplainController extends Controller
         //saving data to database
         $input=$request->all();
         $user->complains()->create($input);
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success','post created');
 
         // //Saving complain to the database
         // $complain=new Complain();
@@ -132,6 +133,7 @@ class ComplainController extends Controller
         return view('user.edit.compEdit',compact('complain'));
     }
 
+        //Saving changes to database
     public function update(Request $request, string $id)
     {
         //
@@ -152,7 +154,7 @@ class ComplainController extends Controller
         $complain->description=$request->input('description');
         $complain->save();
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success','Changes Updated');
         
     }
 
@@ -165,7 +167,7 @@ class ComplainController extends Controller
         //
         $complain=Complain::findorFail($id);
         $complain->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success','Complain Deleted');
     }
 
     //method to generate view

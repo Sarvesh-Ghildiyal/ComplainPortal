@@ -75,15 +75,14 @@
                 </div>
             </div>
         </nav>
-            {{-- <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <header>
-                        <div class="row">
-                        <div class="col-4 college_logo"><img src="/logo2.png" alt="College Logo" class="img-fluid w-50 "></div>
-                        <div class="col-8 college_name">THDC_Institute of Hydropower Engineering & Technology, Tehri</div>
-                    </div>
-                    </header>
-            </div> --}}
+
+        <main class="py-4">
+            <div class="row">
+                <div class="col-md-8 offset-2">
+                    @include('partials.message')
+                </div>
+            </div>
+        </main>
         </div>
         
             @yield('content')
