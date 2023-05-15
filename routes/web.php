@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ComplainController;
 
 /*
@@ -38,4 +39,5 @@ Route::get('/compalin/view',[App\Http\Controllers\ComplainController::class,'vie
 
 // complain status routes
 Route::get('/compalin/status',[App\Http\Controllers\ComplainController::class,'statusIndex'])->name('compStatusIndex');
-Route::get('/compalin/status/{id}',[App\Http\Controllers\ComplainController::class,'filterIndex'])->name('compFilter');
+Route::get('/compalin/status/{id}',[ComplainController::class,'filterIndex'])->name('compFilter');
+
