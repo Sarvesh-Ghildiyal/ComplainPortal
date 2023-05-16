@@ -41,3 +41,6 @@ Route::get('/compalin/view',[App\Http\Controllers\ComplainController::class,'vie
 Route::get('/compalin/status',[App\Http\Controllers\ComplainController::class,'statusIndex'])->name('compStatusIndex');
 Route::get('/compalin/status/{id}',[ComplainController::class,'filterIndex'])->name('compFilter');
 
+//For deleting operation of complain
+Route::get('/complian/delete',[PageController::class,'deleteIndex'])->name('compDeleteIndex');
+Route::get('/complian/{complain}/delete',[PageController::class,'delete'])->name('complain.delete');

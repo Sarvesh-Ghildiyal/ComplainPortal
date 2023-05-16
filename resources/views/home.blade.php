@@ -27,7 +27,7 @@
                     <a href="{{route('compStatusIndex')}}" class="btn btn-info">Status</a>
                 
                     <a href="#" class="btn btn-secondary">Remark</a>
-                    <a href="#" class="btn btn-danger">Delete</a>
+                    <a href="{{route('compDeleteIndex')}}" class="btn btn-danger">Delete</a>
                 </div>
 
             </div>
