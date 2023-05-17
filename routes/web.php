@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ComplainController;
+use App\Http\Controllers\Admin\AdminPageController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +47,14 @@ Route::get('/compalin/status/{id}',[ComplainController::class,'filterIndex'])->n
 //For deleting operation of complain
 Route::get('/complian/delete',[PageController::class,'deleteIndex'])->name('compDeleteIndex');
 Route::get('/complian/{complain}/delete',[PageController::class,'delete'])->name('complain.delete');
+
+
+
+//for Admin
+
+Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
+
+    Route::get('dashboard',[AdminPageController::class,'dashboard'])->name('adminDashboard');
+
+});
+
