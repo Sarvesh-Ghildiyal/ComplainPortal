@@ -3,14 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Admin;
-use App\Models\Complain;
+use App\Models\User;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -45,11 +44,7 @@ class User extends Authenticatable
     ];
 
     //relationship with complain model
-    public function complains(){
-        return $this->hasMany(Complain::class);
-    }
-
-    public function admin(){
-        return $this->belongsTo(Admin::class);
+    public function users(){
+        return $this->hasMany(User::class);
     }
 }
