@@ -171,7 +171,10 @@ class ComplainController extends Controller
         //
         $complain=Complain::findorFail($id);
         $complain->delete();
-        return view('user.delete.compDeleteIndex')->with('success','Complain Deleted');
+        $complains=Complain::all();
+        $user=Auth::user();
+        $uid=$user->id;
+        return view('user.delete.compDeleteIndex',compact('complains','uid'))->with('success','Complain Deleted');
     }
 
     //method to generate view
