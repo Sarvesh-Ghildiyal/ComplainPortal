@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ComplainController;
+use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\Auth\AdminLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +47,20 @@ Route::get('/compalin/status/{id}',[ComplainController::class,'filterIndex'])->n
 //For deleting operation of complain
 Route::get('/complian/delete',[PageController::class,'deleteIndex'])->name('compDeleteIndex');
 Route::get('/complian/{complain}/delete',[PageController::class,'delete'])->name('complain.delete');
+
+
+//FOR ADMIN
+Route::namespace('Admin')->prefix('admin')->name('admin')->group(function(){
+    Route::namespace('Auth')->group(function(){
+
+        //to show login page
+        Route::get('login',[AdminLoginController::class,'show'])->name('Login');
+        Route::post('login',[AdminLoginController::class,'store'])->name('LoginSubmit');
+    });
+
+    Route::middleware('admin')->group(function(){
+         Route::get('dashboard',[AdminHomeController::class,'index'])->name('Dashboard');
+
+    });
+   Route::post('logout',[AdminLoginController::class,'destroy'])->name('Logout');
+});
